@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Administración de tickets</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	  	<link rel="icon" href="http://icon-icons.com/icons2/906/PNG/128/invoice_icon-icons.com_70095.png">
+	</head>
+	<body>
+		<div class="container" style="width: 55%">
+		  	<h2>Administración de tickets</h2>
+			{% if tickets %}
+				<div class="table-responsive">
+					<table class="table table-bordered table-hover">
+						<thead>
+							<tr>
+								<th>Fecha de emisión</th>
+								<th>Ciudad de origen</th>
+								<th>Ciudad de destino</th>
+								<th>Precio</th>
+								<th>Adquiriente</th>
+								<th>Puesto</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for t in tickets %}
+								<tr>
+								<td> {{ t.fechaEmision }} </td>
+								<td> {{ t.ciudadO }} </td>
+								<td> {{ t.ciudadD }} </td>
+								<td> {{ t.precio }} </td>
+								<td> {{ t.cedula }} </td>
+								<td> {{ t.puesto }} </td>
+								<td><a class="btn btn-default" href="/tickets/Actualizar/{{ t.id }}" role="button">Editar</a>
+									<a class="btn btn-default" onclick="seguro({{t.id}})" role="button">Eliminar</a>
+									</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+			  	</div>
+			{% else %}
+				<h3>No hay tickets disponibles</h3>
+			{% endif %}
+			<a class="btn btn-default" href="/tickets/crear/" role="button">Crear ticket</a>
+		</div>
+		<script>
+			function seguro(tId) {
+				var href = "/tickets/eliminar/"+tId+"";
+
+			    if (confirm("Esta seguro que desea eliminarlo?") == true) {
+			        window.location=href;
+			    }
+			}
+		</script>
+	</body>
+</html>

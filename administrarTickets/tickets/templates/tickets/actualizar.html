@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>{{ titulo }}</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="icon" href="http://icon-icons.com/icons2/906/PNG/128/invoice_icon-icons.com_70095.png">
+</head>
+<body>
+<div class="container" style="width: 40%">
+  <h2>{{ titulo }}</h2>
+  <hr>
+  <form action={% url 'actualizar' tId %} method="POST">
+  {% csrf_token %}
+
+    <div class="form-group">
+      <label>Fecha de emisión</label>
+      <input type="date" class="form-control" id="fechaEmision" name="fechaEmision" required="required" value="{{ fechaEmision }}">
+    </div>
+
+    <div class="form-group">
+      <label >Ciudad de Origen:</label>
+      <select class="form-control" id="ciudadO" name="ciudadO">
+        <option value="Esmeraldas"
+        	{% if ciudadO == "Esmeraldas"  %}
+        	selected="selected"
+        	{% endif %}
+        >Esmeraldas</option>
+        <option value="Manabi"
+        {% if ciudadO == "Manabi"  %}
+        	selected="selected"
+        	{% endif %}
+        	>Manabi</option>
+        <option value="Quito"
+        {% if ciudadO == "Quito"  %}
+        	selected="selected"
+        	{% endif %}
+        	>Quito</option>
+        <option value="Guayaquil"
+          	{% if ciudadO == "Guayaquil"  %}
+          	selected="selected"
+          	{% endif %}
+          >Guayaquil</option>
+          <option value="Latacunga"
+          	{% if ciudadO == "Latacunga"  %}
+          	selected="selected"
+          	{% endif %}
+          >Latacunga</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label >Ciudad de Destino:</label>
+      <select class="form-control" id="ciudadD" name="ciudadD">
+        <option value="Esmeraldas"
+        	{% if ciudadD == "Esmeraldas"  %}
+        	selected="selected"
+        	{% endif %}
+        >Esmeraldas</option>
+        <option value="Manabi"
+        {% if ciudadD == "Manabi"  %}
+        	selected="selected"
+        	{% endif %}
+        	>Manabi</option>
+        <option value="Quito"
+        {% if ciudadD == "Quito"  %}
+        	selected="selected"
+        	{% endif %}
+        	>Quito</option>
+        <option value="Guayaquil"
+          	{% if ciudadD == "Guayaquil"  %}
+          	selected="selected"
+          	{% endif %}
+          >Guayaquil</option>
+          <option value="Latacunga"
+          	{% if ciudadD == "Latacunga"  %}
+          	selected="selected"
+          	{% endif %}
+          >Latacunga</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Precio:</label>
+      <input type="number" step="0.01" class="form-control" id="precio" name="precio" required="required" value="{{ precio }}">
+    </div>
+
+    <div class="form-group">
+      <label>Adquiriente:</label>
+      <input type="text" class="form-control" id="cedula" name="cedula" required="required" value="{{ fechaEmision }}" maxlength="10" minlength="10">
+    </div>
+
+    <div class="form-group">
+      <label>Puesto</label>
+      <input type="text" class="form-control" id="puesto" name="puesto" required="required" value="{{ puesto }}" maxlength="3" minlength="2"">
+    </div>
+
+
+    <button type="submit" class="btn btn-default">{{ action }}</button>
+  </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	  	<title>Guardar Ticket</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	  	<link rel="icon" href="http://icon-icons.com/icons2/906/PNG/128/invoice_icon-icons.com_70095.png">
+	</head>
+	<body>
+		<div class="container" style="width: 40%">
+		  	<a href="{% url 'crear' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+		  	<h2>Guardar Ticket</h2>
+		  	<hr>
+		  	<div class="content container">
+				<div class="row">
+			  		<div class="col-md-8">
+						{% block content %}
+						{% endblock %}
+			  		</div>
+				</div>
+		  	</div>
+		</div>
+	</body>
+</html>
